@@ -1,0 +1,74 @@
+SQL Results Report
+
+SELECT Roles.role_name, Permissions.permission_name
+FROM RolePermissions
+INNER JOIN Roles ON RolePermissions.role_id = Roles.role_id
+INNER JOIN Permissions ON RolePermissions.permission_id = Permissions.permission_id;
+Description:
+This query retrieves all roles along with their assigned permissions. It joins the Roles and Permissions tables via the RolePermissions table to get the permissions linked to each role.
+
+Result:
+The result shows that the 'Admin' role is assigned both 'Read' and 'Write' permissions, while the 'Manager' role is assigned 'Execute' permission.
+Screenshot of Results:
+
+ Query: Retrieve Users and Their Roles
+
+SELECT Users.user_name, Roles.role_name
+FROM UserRoles
+INNER JOIN Users ON UserRoles.user_id = Users.user_id
+INNER JOIN Roles ON UserRoles.role_id = Roles.role_id;
+Description:
+This query shows the users in the system and the roles they have been assigned by joining the UserRoles, Users, and Roles tables.
+
+Result:
+The result lists users and their roles, e.g., User 101 is an Admin, User 102 is a User, etc.
+Screenshot of Results:
+
+Query: Subquery - Find Roles with 'Read' Permission
+
+SELECT role_name
+FROM Roles
+WHERE role_id IN (
+    SELECT role_id FROM RolePermissions
+    WHERE permission_id = (
+        SELECT permission_id FROM Permissions WHERE permission_name = 'Read'
+    )
+);
+Description:
+This query uses a subquery to find all roles that have been granted the 'Read' permission. It first identifies the permission_id of 'Read' and then finds all role_ids linked to that permission.
+
+Result:
+The result shows that the 'Admin' and 'User' roles have 'Read' permission.
+Screenshot of Results:
+
+SQL Transactions
+ Transaction: Add New User Role
+
+BEGIN;
+
+INSERT INTO UserRoles (user_id, role_id)
+VALUES (104, 2);
+
+COMMIT;
+Description:
+This transaction adds a new user (user_id = 104) to the 'User' role (role_id = 2). The BEGIN statement starts the transaction, and COMMIT ensures the changes are saved.
+
+Result:
+The user was successfully added to the UserRoles table with the 'User' role.
+Screenshot of Results:
+
+Transaction: Update Role Name
+
+BEGIN;
+
+UPDATE Roles SET role_name = 'SuperAdmin' WHERE role_id = 1;
+
+COMMIT;
+Description:
+This transaction updates the role name for the role with role_id = 1 from 'Admin' to 'SuperAdmin'. The changes were committed to make them permanent.
+
+Result:
+The role name was successfully updated in the Roles table.
+Screenshot of Results:
+
+ 
