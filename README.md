@@ -21,7 +21,8 @@
 ### SQL CONCEPTUAL DIAGRAM
 ![conceptual diagram drawio](https://github.com/user-attachments/assets/28259533-328e-44aa-828d-851d707b40f9)
 
-### RESULT
+
+
 
 
 
