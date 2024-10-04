@@ -1,4 +1,4 @@
-# ## Screenshots
+# ## Screenshots 
 
 ### SQL Query Execution
 ![SQL Query Screenshot]![Screenshot (127)](https://github.com/user-attachments/assets/ac60a481-7c3e-4544-a22d-80fa9ec27d22)
@@ -20,6 +20,7 @@
 
 ### SQL CONCEPTUAL DIAGRAM
 ![conceptual diagram drawio](https://github.com/user-attachments/assets/28259533-328e-44aa-828d-851d707b40f9)
+
 
 
 
